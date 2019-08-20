@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+
+if [ $# -ne 1 ]
+then
+	echo "Wrong number of arguments"
+	exit 1
+fi
+
+if [ -e "$1" ]
+then
+	echo "File already exists. Please rename local file."
+	exit 2
+fi
+
+scp -r "jizbarad@fray3.fit.cvut.cz:~export/$1" .

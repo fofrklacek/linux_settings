@@ -1,0 +1,20 @@
+#!/bin/bash
+
+case "$1" in
+	start)
+		sudo service ssh start
+		;;
+	stop)
+		sudo service ssh stop
+		;;
+	status)
+		sudo systemctl status ssh >&1
+		;;
+	*)
+		echo "USAGE:"
+		echo "\tssh_server start  - starts the ssh server"
+		echo "\tssh_server stop   - stops the ssh server"
+		echo "\tssh_server status - print status of server (running/stopped)"
+		;;
+esac
+

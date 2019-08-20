@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#creates backup to all arguments in ~/backup
+
+if [ $# -lt 1 ]
+then
+	echo "Wrong number of arguments"
+	exit 1;
+fi
+
+file=$(echo "$@" | tr ' ' '\n' | grep -E '^[^-]')
+
+newfile=$(date +%Y'_'%m'_'%d'_'%H':'%M'_')"$file"
+
+#create backup
+if [ ! -e ~/Backup/"$newfile" ]
+then
+	echo "Creating Backup in $newfile"
+	cp "$file" ~/Backup/"$newfile"
+fi
+
+exit 0

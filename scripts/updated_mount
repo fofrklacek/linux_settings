@@ -1,0 +1,5 @@
+#!/bin/bash
+
+mkdir ~/external_storage
+
+mount "$@"

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo wpa_supplicant -B -c /etc/wifi_connections/Antony_Boy.conf -i wlp1s0
+
+sudo dhcpcd wlp1s0

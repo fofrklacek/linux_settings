@@ -1,0 +1,37 @@
+#!/bin/bash
+
+
+# test pokud existuje ci je validni
+if [ $# -ne 1 ]
+then
+	echo "Wrong number of arguments!"
+	exit 1
+fi
+
+
+#test if you are in folder
+if [ $(pwd|tr '/' '\n' | tail -n 1) != "src" ]
+then 
+	echo "You are in wrong folder"
+	exit 2
+fi
+
+
+# $core is new file without extension
+#core="${1%.cpp}"
+
+#A="$1"
+# test if file .h/.cpp exists  or is not .h file
+if [ -e "$1.cpp" -o -e "../include/$1.h" ]
+then
+	echo "Error on creation level!"
+	exit 3
+fi
+
+~/scripts/project_add_modules/source.bash "$1"
+
+~/scripts/project_add_modules/header.bash "$1"
+
+
+exit 0
+

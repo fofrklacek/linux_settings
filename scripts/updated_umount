@@ -1,0 +1,14 @@
+#!/bin/bash
+
+umount "$@"
+
+if [ "$?" -eq 0 ]
+then 
+	rm -r ~/external_storage
+	
+	exit 0
+fi
+
+echo "unable to umount"
+	
+exit 1

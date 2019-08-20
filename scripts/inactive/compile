@@ -1,0 +1,47 @@
+#!/bin/bash
+
+
+while [ $( ls | grep -E ''"$jmeno"'\.c$' | wc -l ) -ne 1 ] 
+do
+
+	pocet=$( ls | grep -E ''"$jmeno"'\.c$' | wc -l )
+	printf "%s:Wrong number of compilable files in directory (%d)\nPlease type the name of the file:\n" $0 $pocet 
+	 
+	read jmeno
+	while [ "$jmeno" = "l" ]
+	do
+		printf "your options are:\n\n"
+		ls | grep -E '\.c' | tr ' ' '\n' | nl
+		printf "\nPlease type the name or number of the file:\n"
+		read jmeno
+	done
+		
+	if [ ! -z $(grep -E '^[0-9]+$' <<<"$jmeno" ) ]
+	then
+		jmeno=$(ls | grep -E '\.c' | tr ' ' '\n' | sed -n "$jmeno"'p' )
+		jmeno="${jmeno%.c}"
+	fi
+	
+done
+
+
+jmeno=$(ls | grep -E ''"$jmeno"'\.c$')
+
+jmeno="${jmeno%.c}"
+
+
+
+
+if gcc -Wall -pedantic -o "$jmeno.out" "$jmeno.c"
+then
+	echo "kompilace probehla uspesne"
+else 
+	echo "chyba pri kompilaci"
+	exit 1
+fi
+
+
+#ctest "$jmeno"
+
+
+exit 0

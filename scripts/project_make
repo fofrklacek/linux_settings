@@ -1,0 +1,27 @@
+#!/bin/bash
+
+
+if [ $# -ne 1 -o -e "$1" ]
+then
+	echo "Name is not valid!"
+	exit 1
+fi
+
+mkdir "$1"
+
+cd "$1"
+
+mkdir {src,include,build,bin,testdata,submit}
+
+touch "Makefile"
+
+touch .gitignore
+
+~/scripts/project_make_modules/main.bash
+
+~/scripts/project_make_modules/gitignore.bash
+
+git init "../$1" 
+
+exit 0
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]
+then
+	echo "chybny poce argumentu!"
+	exit 1
+fi
+
+touch "$1"
+echo -e "#include <iostream>\n\n\nint main(void)\n{\n\n\treturn 0;\n}" > "$1"
+
+exit 0;

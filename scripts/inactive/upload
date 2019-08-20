@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+if [ $# -ne 1 ]
+then
+	echo "Wrong number of arguments"
+	exit 1
+fi
+
+scp -r "$1" "jizbarad@fray3.fit.cvut.cz:~export/$1"

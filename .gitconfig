@@ -1,0 +1,7 @@
+[user]
+	email = r.jizba@seznam.cz
+	name = Jizba Radek
+[core]
+	editor = vim
+[alias]
+	ll = log --oneline --graph --all --decorate
