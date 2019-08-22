@@ -8,6 +8,19 @@ then
 	exit 1
 fi
 
+case "$1" in
+	"-l"|"--local")
+		loc=true	
+		;;
+	"-r"|"--remote")
+		loc=false
+		;;
+	*)
+		echo "Unknown target ($1) specifier"
+		usage
+		exit 2
+		;;
+esac
 
 #------
 if [ $# -ne 1 -o -e "$1" ]
