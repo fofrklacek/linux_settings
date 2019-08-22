@@ -1,36 +1,6 @@
 #!/bin/bash
 
-
-if [ $# -gt 2 ]
-then
-	echo "Wrong number of arguments!"
-	usage
-	exit 1
-fi
-
-if [ $# -eq 0 ]
-then
-	#no arguments recieved (remote repos)
-	create_remote
-fi
-
-case "$1" in
-	"-l"|"--local")
-		create_local "$2"
-		exit 0
-		;;
-	"-r"|"--remote")
-		create_remote
-		exit 0
-		;;
-	*)
-		echo "Unknown target ($1) specifier"
-		usage
-		exit 2
-		;;
-esac
-
-function usage{
+function usage {
 	echo "Usage of project_make:"
 	echo "project_make [-l|--local] name"
 	echo "project_make [-r|--remote]"
@@ -40,7 +10,7 @@ function usage{
 	echo "Remote is default"
 }
 
-function create_remote{
+function create_remote {
 	echo "Creating remote project"	
 
 	mkdir {src,include,build,bin,testdata,submit}
@@ -54,7 +24,7 @@ function create_remote{
 	~/scripts/project_make_modules/gitignore.bash
 }
 
-function create_local{
+function create_local {
 	if [ -e "$1" ]
 	then
 		echo "Name already exists!"
@@ -77,3 +47,46 @@ function create_local{
 	
 	git init "../$1" 
 }
+
+if [ $# -gt 2 ]
+then
+	echo "Wrong number of arguments!"
+	usage
+	exit 1
+fi
+
+if [ $# -eq 0 ]
+then
+	#no arguments recieved (remote repos)
+	create_remote
+	exit 0
+fi
+
+case "$1" in
+	"-l"|"--local")
+		if [ $# -eq 2 ] 
+			create_local "$2"
+			exit 0
+		else
+			echo "Name of project has to be specified when creating local project"
+			exit 4
+		fi
+		;;
+	"-r"|"--remote")
+		if [ $# -eq 1 ] 
+		then
+			create_remote
+			exit 0
+		else
+			echo "Cannot specify name when creating remote project"
+			usage
+			exit 5
+		fi
+		;;
+	*)
+		echo "Unknown target ($1) specifier"
+		usage
+		exit 2
+		;;
+esac
+
