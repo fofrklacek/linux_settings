@@ -1,19 +1,26 @@
 #!/bin/bash
 
 
-if [ $# -ne 2 ]
+if [ $# -gt 2 ]
 then
 	echo "Wrong number of arguments!"
 	usage
 	exit 1
 fi
 
+if [ $# -eq 0 ]
+then
+	#no arguments recieved (remote repos)
+	create_remote
+fi
+
 case "$1" in
 	"-l"|"--local")
-		loc=true	
+		create_local
 		;;
 	"-r"|"--remote")
-		loc=false
+		create_remote
+		exit 0
 		;;
 	*)
 		echo "Unknown target ($1) specifier"
@@ -23,11 +30,13 @@ case "$1" in
 esac
 
 #------
-if [ $# -ne 1 -o -e "$1" ]
+
+if [ -e "$2" ]
 then
-	echo "Name is not valid!"
-	exit 1
+	echo "Name already exists!"
+	exit 3
 fi
+
 
 mkdir "$1"
 
@@ -49,8 +58,26 @@ exit 0
 
 function usage{
 	echo "Usage of project_make:"
-	echo "project_make -lr name"
+	echo "project_make [-l|--local] name"
+	echo "project_make [-r|--remote]"
 	echo "\t-l,--local  = Create local repository"
 	echo "\t-r,--remote = Does not create repository."
 	echo "\t              Used when repository pulled beforehand."
+	echo "Remote is default"
+}
+
+function create_remote{
+	echo "Creating remote project"	
+
+	mkdir {src,include,build,bin,testdata,submit}
+
+	touch "Makefile"
+
+	touch .gitignore
+
+	~/scripts/project_make_modules/main.bash
+
+	~/scripts/project_make_modules/gitignore.bash
+	
+	exit 0
 }
