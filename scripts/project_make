@@ -1,6 +1,15 @@
 #!/bin/bash
 
 
+if [ $# -ne 2 ]
+then
+	echo "Wrong number of arguments!"
+	usage
+	exit 1
+fi
+
+
+#------
 if [ $# -ne 1 -o -e "$1" ]
 then
 	echo "Name is not valid!"
@@ -25,3 +34,10 @@ git init "../$1"
 
 exit 0
 
+function usage{
+	echo "Usage of project_make:"
+	echo "project_make -lr name"
+	echo "\t-l,--local  = Create local repository"
+	echo "\t-r,--remote = Does not create repository."
+	echo "\t              Used when repository pulled beforehand."
+}
