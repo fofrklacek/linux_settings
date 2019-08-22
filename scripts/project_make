@@ -65,10 +65,12 @@ fi
 case "$1" in
 	"-l"|"--local")
 		if [ $# -eq 2 ] 
+		then
 			create_local "$2"
 			exit 0
 		else
 			echo "Name of project has to be specified when creating local project"
+			usage
 			exit 4
 		fi
 		;;
