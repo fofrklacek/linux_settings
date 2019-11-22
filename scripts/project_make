@@ -17,11 +17,9 @@ function create_remote {
 
 	cp ~/scripts/project_make_modules/Makefile.skel Makefile
 
-	touch .gitignore
+	cp ~/scripts/project_make_modules/gitignore.skel .gitignore
 
 	cp ~/scripts/project_make_modules/main.skel src/main.cpp 
-
-	~/scripts/project_make_modules/gitignore.bash
 }
 
 function create_local {
@@ -39,13 +37,9 @@ function create_local {
 	
 	cp ~/scripts/project_make_modules/Makefile.skel Makefile
 	
-	touch .gitignore
+	cp ~/scripts/project_make_modules/gitignore.skel .gitignore
 	
 	cp ~/scripts/project_make_modules/main.skel src/main.cpp 
-	
-	~/scripts/project_make_modules/gitignore.bash
-	
-	git init "../$1" 
 }
 
 if [ $# -gt 2 ]
