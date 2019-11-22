@@ -18,6 +18,7 @@ function create_remote {
 	cp ~/scripts/project_make_modules/Makefile.skel Makefile
 
 	cp ~/scripts/project_make_modules/gitignore.skel .gitignore
+	chmod 644 .gitignore
 
 	cp ~/scripts/project_make_modules/main.skel src/main.cpp 
 }
@@ -38,6 +39,7 @@ function create_local {
 	cp ~/scripts/project_make_modules/Makefile.skel Makefile
 	
 	cp ~/scripts/project_make_modules/gitignore.skel .gitignore
+	chmod 644 .gitignore
 	
 	cp ~/scripts/project_make_modules/main.skel src/main.cpp 
 
