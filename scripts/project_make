@@ -15,11 +15,11 @@ function create_remote {
 
 	mkdir {src,include,build,bin,testdata,submit}
 
-	touch "Makefile"
+	cp ~/scripts/project_make_modules/Makefile.skel src/Makefile
 
 	touch .gitignore
 
-	~/scripts/project_make_modules/main.bash
+	cp ~/scripts/project_make_modules/main.skel src/main.cpp 
 
 	~/scripts/project_make_modules/gitignore.bash
 }
@@ -37,11 +37,11 @@ function create_local {
 	
 	mkdir {src,include,build,bin,testdata,submit}
 	
-	touch "Makefile"
+	cp ~/scripts/project_make_modules/Makefile.skel src/Makefile
 	
 	touch .gitignore
 	
-	~/scripts/project_make_modules/main.bash
+	cp ~/scripts/project_make_modules/main.skel src/main.cpp 
 	
 	~/scripts/project_make_modules/gitignore.bash
 	
