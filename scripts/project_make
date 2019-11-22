@@ -40,6 +40,8 @@ function create_local {
 	cp ~/scripts/project_make_modules/gitignore.skel .gitignore
 	
 	cp ~/scripts/project_make_modules/main.skel src/main.cpp 
+
+	git init
 }
 
 if [ $# -gt 2 ]
