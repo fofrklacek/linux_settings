@@ -41,7 +41,7 @@ function create_local {
 	
 	touch .gitignore
 	
-	~/scripts/project_make_modules/main.bash
+	cp ~/scripts/project_make_modules/main.skel src/main.cpp 
 	
 	~/scripts/project_make_modules/gitignore.bash
 	
