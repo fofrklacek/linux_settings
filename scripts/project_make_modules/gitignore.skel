@@ -2,3 +2,6 @@ bin/**
 build/**
 testdata/**
 **.swp
+**.d
+**.o
+**.out
