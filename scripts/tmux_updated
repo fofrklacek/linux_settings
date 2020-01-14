@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#check if tmux session exists
+if tmux has-session -t mp3
+then
+	#connect to already existing session of tmux
+	tmux attach -t mp3
+else
+	#create new tmux session
+	tmux new -s mp3
+fi
+
