@@ -47,6 +47,7 @@ alias find='find 2>/dev/null '
 #starts pdf/jpeg viewer
 ## alias image='eog'
 
+alias mp3='~/scripts/tmux_updated'
 
 ########AUTOCOMPLETE functions#################
 
