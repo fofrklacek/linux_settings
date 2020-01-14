@@ -1,0 +1,13 @@
+#!/bin/bash
+
+while true 
+do 
+	#clear after cycle son next iteration can start with empty workplace
+	clear
+
+	#command sensors has to be installed
+	sensors 
+
+	#refreash time is set to one second	
+	sleep 1 
+done 
