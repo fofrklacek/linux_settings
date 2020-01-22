@@ -29,6 +29,7 @@ alias top='htop'
 
 #add own scripts to path
 PATH="$PATH:/home/radek/scripts"
+PATH="$PATH:/home/radek/utils"
 
 #compiler shortcut
 ## alias g='g++ -Wall -pedantic -fsanitize=address -g '
