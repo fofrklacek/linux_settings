@@ -56,3 +56,7 @@ alias mp3='~/scripts/tmux_updated'
 ## function ssh_server {
 ## 	~/scripts/ssh_server "$1"
 ## }
+if [ -x /usr/bin/sensors ]
+then
+	alias sensors='~/scripts/sensors_updated'
+fi
