@@ -6,7 +6,7 @@ then
 	#connect to already existing session of tmux
 	tmux attach -t mp3
 else
-	#create new tmux session
-	tmux new -s mp3
+	#create new tmux session and starts cmus and alsamixer
+	tmux new-session -s mp3 -d cmus \; split-window -h alsamixer \; attach
 fi
 
