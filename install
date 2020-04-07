@@ -2,13 +2,13 @@
 
 echo "Are you sure that you want to remove .bashrc,"
 echo ".profile, .bash_aliases, .scripts/, .bash_logout,"
-echo ".gitconfig?"
+echo ".gitconfig, .vim, .vimrc?"
 
 read choice
 
 case "$choice" in
 	yes|y)
-		cp -r .scripts .bashrc .bash_aliases .gitconfig .bash_logout .bash_profile ~/.
+		cp -r .scripts .bashrc .bash_aliases .gitconfig .bash_logout .bash_profile .vim .vimrc ~/.
 		;;
 	no|n)
 		exit 1
