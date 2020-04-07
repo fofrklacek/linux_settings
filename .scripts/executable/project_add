@@ -16,7 +16,6 @@ then
 	exit 2
 fi
 
-
 # $core is new file without extension
 #core="${1%.cpp}"
 
@@ -28,10 +27,9 @@ then
 	exit 3
 fi
 
-~/scripts/project_add_modules/source.bash "$1"
+../module/project_add/source.bash "$1"
 
-~/scripts/project_add_modules/header.bash "$1"
-
+../module/project_add/header.bash "$1"
 
 exit 0
 

@@ -1,4 +1,5 @@
 SCRIPT_DIR="~/.scripts"
+NOEXEC="nonexecutable"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -17,7 +18,7 @@ alias la='ls -AhlF'
 alias l='ls -CF'
 
 #changes vim to updated vim
-alias vim="$SCRIPT_DIR/updated_vim"
+alias vim="$SCRIPT_DIR/$NOEXEC/updated_vim"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -30,8 +31,8 @@ alias top='htop'
 ## alias mars='java -jar ~/programs/Mars.jar'
 
 #add own scripts to path
-PATH="$PATH:$SCRIPT_DIR"
-PATH="$PATH:/home/radek/utils"
+PATH="$PATH:$SCRIPT_DIR/executable"
+PATH="$PATH:$SCRIPT_DIR/utils"
 
 #compiler shortcut
 ## alias g='g++ -Wall -pedantic -fsanitize=address -g '
@@ -50,7 +51,7 @@ alias find='find 2>/dev/null '
 #starts pdf/jpeg viewer
 ## alias image='eog'
 
-alias mp3="$SCRIPT_DIR/tmux_updated"
+alias mp3="$SCRIPT_DIR/$NOEXEC/tmux_updated"
 
 ########AUTOCOMPLETE functions#################
 
@@ -58,9 +59,10 @@ alias mp3="$SCRIPT_DIR/tmux_updated"
 ## function ssh_server {
 ## 	~/scripts/ssh_server "$1"
 ## }
+
 if [ -x /usr/bin/sensors ]
 then
-	alias sensors="$SCRIPT_DIR/sensors_updated"
+	alias sensors="$SCRIPT_DIR/$NOEXEC/sensors_updated"
 fi
 
 if [ -x /usr/bin/aft-mtp-cli ]
