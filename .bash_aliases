@@ -1,3 +1,5 @@
+SCRIPT_DIR="~/.scripts"
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -15,7 +17,7 @@ alias la='ls -AhlF'
 alias l='ls -CF'
 
 #changes vim to updated vim
-alias vim='~/scripts/updated_vim'
+alias vim="$SCRIPT_DIR/updated_vim"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -28,7 +30,7 @@ alias top='htop'
 ## alias mars='java -jar ~/programs/Mars.jar'
 
 #add own scripts to path
-PATH="$PATH:/home/radek/scripts"
+PATH="$PATH:$SCRIPT_DIR"
 PATH="$PATH:/home/radek/utils"
 
 #compiler shortcut
@@ -48,7 +50,7 @@ alias find='find 2>/dev/null '
 #starts pdf/jpeg viewer
 ## alias image='eog'
 
-alias mp3='~/scripts/tmux_updated'
+alias mp3="$SCRIPT_DIR/tmux_updated"
 
 ########AUTOCOMPLETE functions#################
 
@@ -58,7 +60,7 @@ alias mp3='~/scripts/tmux_updated'
 ## }
 if [ -x /usr/bin/sensors ]
 then
-	alias sensors='~/scripts/sensors_updated'
+	alias sensors="$SCRIPT_DIR/sensors_updated"
 fi
 
 if [ -x /usr/bin/aft-mtp-cli ]
