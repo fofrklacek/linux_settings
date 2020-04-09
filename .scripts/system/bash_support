@@ -1,0 +1,30 @@
+#!/bin/bash
+
+##### loging function #####
+function log {
+	# Test for incorrect usage of log function
+	[ $# -lt 1 ] && echo "ERROR: [$(date)] Wrong number of arguments in log function. ($0 $@)" >>~/.my_log && return 1
+
+
+	case "$2" in
+		0|*) # Default message (missing command/not installed)
+			echo "WARNING: [$(date)] Function \"$2\" not found. Check if it is installed" >>~/.my_log && return 0
+		;;
+	esac
+}
+
+function check {
+	[ $# -lt 1 ] && echo "ERROR: [$(date)] Wrong number of arguments in check function. ($0 $@)" >>~/.my_log && return 1
+	
+
+	if [ ! $(which "$1" 2>/dev/null) ]
+	then
+		echo "doesnt exist $@" >aaaa
+		log "$1"
+		return 1
+	fi
+
+	
+	# Function exists
+	return 0
+}

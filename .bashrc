@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+##### load support functions #####
+[ -e ~/.scripts/system/bash_support ] && source ~/.scripts/system/bash_support || return
+
 ##### PS1 setup #####
 
 # Make __git_ps1 available
@@ -30,16 +33,22 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # git setup
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWSTASHSTATE=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
-export GIT_PS1_SHOWUPSTREAM="auto verbose"
+if check git
+then
+	export GIT_PS1_SHOWDIRTYSTATE=1
+	export GIT_PS1_SHOWSTASHSTATE=1
+	export GIT_PS1_SHOWUNTRACKEDFILES=1
+	export GIT_PS1_SHOWUPSTREAM="auto verbose"
+fi
 
 # man color scheme
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
+if check man
+then
+	export LESS_TERMCAP_mb=$'\e[1;32m'
+	export LESS_TERMCAP_md=$'\e[1;32m'
+	export LESS_TERMCAP_me=$'\e[0m'
+	export LESS_TERMCAP_se=$'\e[0m'
+	export LESS_TERMCAP_so=$'\e[01;33m'
+	export LESS_TERMCAP_ue=$'\e[0m'
+	export LESS_TERMCAP_us=$'\e[1;4;31m'
+fi

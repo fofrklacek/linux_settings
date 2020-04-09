@@ -25,7 +25,7 @@ alias vim="$SCRIPT_DIR/$NOEXEC/updated_vim"
 ## alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 #changes clasical top to htop
-alias top='htop'
+check htop && alias top='htop'
 
 #Shortcut for mips(assembly program)
 ## alias mars='java -jar ~/programs/Mars.jar'
@@ -51,7 +51,7 @@ alias find='find 2>/dev/null '
 #starts pdf/jpeg viewer
 ## alias image='eog'
 
-alias mp3="$SCRIPT_DIR/$NOEXEC/tmux_updated"
+check tmux && alias mp3="$SCRIPT_DIR/$NOEXEC/tmux_updated"
 
 ########AUTOCOMPLETE functions#################
 
@@ -60,12 +60,6 @@ alias mp3="$SCRIPT_DIR/$NOEXEC/tmux_updated"
 ## 	~/scripts/ssh_server "$1"
 ## }
 
-if [ -x /usr/bin/sensors ]
-then
-	alias sensors="$SCRIPT_DIR/$NOEXEC/sensors_updated"
-fi
+check sensors && alias sensors="$SCRIPT_DIR/$NOEXEC/sensors_updated"
 
-if [ -x /usr/bin/aft-mtp-cli ]
-then
-	alias phone_connect='aft-mtp-cli'
-fi
+check aft-mtp-cli && alias phone_connect='aft-mtp-cli'
