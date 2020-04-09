@@ -19,7 +19,6 @@ function check {
 
 	if [ ! $(which "$1" 2>/dev/null) ]
 	then
-		echo "doesnt exist $@" >aaaa
 		log "$1"
 		return 1
 	fi
