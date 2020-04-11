@@ -27,9 +27,9 @@ then
 	exit 3
 fi
 
-../module/project_add/source.bash "$1"
+"$BASH_SOURCE"/../../module/project_add/source.bash "$1"
 
-../module/project_add/header.bash "$1"
+"$BASH_SOURCE"/../../module/project_add/header.bash "$1"
 
 exit 0
 

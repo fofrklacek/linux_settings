@@ -15,12 +15,12 @@ function create_remote {
 
 	mkdir {src,include,build,bin,testdata,submit}
 
-	cp ../module/project_make/Makefile.skel Makefile
+	cp "$BASH_SOURCE"/../../module/project_make/Makefile.skel Makefile
 
-	cp ../module/project_make/gitignore.skel .gitignore
+	cp "$BASH_SOURCE"/../../module/project_make/gitignore.skel .gitignore
 	chmod 644 .gitignore
 
-	cp ../module/project_make/main.skel src/main.cpp 
+	cp "$BASH_SOURCE"/../../module/project_make/main.skel src/main.cpp 
 }
 
 function create_local {
@@ -36,13 +36,13 @@ function create_local {
 	
 	mkdir {src,include,build,bin,testdata,submit}
 	
-	cp ../module/project_make/Makefile.skel Makefile
+	cp "$BASH_SOURCE"/../../module/project_make/Makefile.skel Makefile
 	
-	cp ../module/project_make/gitignore.skel .gitignore
+	cp "$BASH_SOURCE"/../../module/project_make/gitignore.skel .gitignore
 
 	chmod 644 .gitignore
 	
-	cp ../module/project_make/main.skel src/main.cpp 
+	cp "$BASH_SOURCE"/../../module/project_make/main.skel src/main.cpp 
 
 	git init
 }
