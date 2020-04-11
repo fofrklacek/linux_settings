@@ -1,0 +1,18 @@
+#!/bin/bash
+
+sleep 0.2
+
+##### load support functions #####
+[ -e ~/.scripts/system/bash_support ] && source ~/.scripts/system/bash_support || return
+
+# if directory doesnt exist create it
+[ ! -d ~/Pictures/screenshots ] && mkdir -p ~/Pictures/screenshots
+
+date_prefix=$(date +"%Y.%m.%d_%H:%M:%S")
+
+if check import
+then
+	import ~/Pictures/screenshots/${date_prefix}_screenshot.png
+fi
+
+exit 0
