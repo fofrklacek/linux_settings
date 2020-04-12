@@ -1,10 +1,12 @@
 #!/bin/bash
 
+# address of root of source dir
+source_dir=$(echo $BASH_SOURCE | tr '/' '\n' | head -n -2 | tr '\n' '/' | head -c -1)
 
 # test pokud existuje ci je validni
 if [ $# -ne 1 ]
 then
-	echo "Wrong number of arguments!"
+	echo -e "Wrong number of arguments!"
 	exit 1
 fi
 
@@ -12,7 +14,7 @@ fi
 #test if you are in folder
 if [ $(pwd|tr '/' '\n' | tail -n 1) != "src" ]
 then 
-	echo "You are in wrong folder"
+	echo -e "You are in wrong folder"
 	exit 2
 fi
 
@@ -23,13 +25,13 @@ fi
 # test if file .h/.cpp exists  or is not .h file
 if [ -e "$1.cpp" -o -e "../include/$1.h" ]
 then
-	echo "Error on creation level!"
+	echo -e "Error on creation level!"
 	exit 3
 fi
 
-"$BASH_SOURCE"/../../module/project_add/source.bash "$1"
+"$source_dir"/module/project_add/source.bash "$1"
 
-"$BASH_SOURCE"/../../module/project_add/header.bash "$1"
+"$source_dir"/module/project_add/header.bash "$1"
 
 exit 0
 

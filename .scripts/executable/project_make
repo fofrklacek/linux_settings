@@ -1,32 +1,33 @@
 #!/bin/bash
 
 function usage {
-	echo "Usage of project_make:"
-	echo "project_make [-l|--local] name"
-	echo "project_make [-r|--remote]"
-	echo "\t-l,--local  = Create local repository"
-	echo "\t-r,--remote = Does not create repository."
-	echo "\t              Used when repository pulled beforehand."
-	echo "Remote is default"
+	echo -e "Usage of project_make:"
+	echo -e "project_make [-l|--local] name"
+	echo -e "project_make [-r|--remote]"
+	echo -e "\t-l,--local  = Create local repository"
+	echo -e "\t-r,--remote = Does not create repository."
+	echo -e "\t              Used when repository pulled beforehand."
+	echo -e "Remote is default"
 }
 
 function create_remote {
-	echo "Creating remote project"	
+	echo -e "Creating remote project"	
 
 	mkdir {src,include,build,bin,testdata,submit}
 
-	cp "$BASH_SOURCE"/../../module/project_make/Makefile.skel Makefile
+	cp "$source_dir"/module/project_make/Makefile.skel Makefile
 
-	cp "$BASH_SOURCE"/../../module/project_make/gitignore.skel .gitignore
+	cp "$source_dir"/module/project_make/gitignore.skel .gitignore
+
 	chmod 644 .gitignore
 
-	cp "$BASH_SOURCE"/../../module/project_make/main.skel src/main.cpp 
+	cp "$source_dir"/module/project_make/main.skel src/main.cpp 
 }
 
 function create_local {
 	if [ -e "$1" ]
 	then
-		echo "Name already exists!"
+		echo -e "Name already exists!"
 		exit 3
 	fi
 	
@@ -36,20 +37,23 @@ function create_local {
 	
 	mkdir {src,include,build,bin,testdata,submit}
 	
-	cp "$BASH_SOURCE"/../../module/project_make/Makefile.skel Makefile
+	cp "$source_dir"/module/project_make/Makefile.skel Makefile
 	
-	cp "$BASH_SOURCE"/../../module/project_make/gitignore.skel .gitignore
+	cp "$source_dir"/module/project_make/gitignore.skel .gitignore
 
 	chmod 644 .gitignore
 	
-	cp "$BASH_SOURCE"/../../module/project_make/main.skel src/main.cpp 
+	cp "$source_dir"/module/project_make/main.skel src/main.cpp 
 
 	git init
 }
 
+# address of root of source dir
+source_dir=$(echo $BASH_SOURCE | tr '/' '\n' | head -n -2 | tr '\n' '/' | head -c -1)
+
 if [ $# -gt 2 ]
 then
-	echo "Wrong number of arguments!"
+	echo -e "Wrong number of arguments!"
 	usage
 	exit 1
 fi
@@ -68,7 +72,7 @@ case "$1" in
 			create_local "$2"
 			exit 0
 		else
-			echo "Name of project has to be specified when creating local project"
+			echo -e "Name of project has to be specified when creating local project"
 			usage
 			exit 4
 		fi
@@ -79,13 +83,13 @@ case "$1" in
 			create_remote
 			exit 0
 		else
-			echo "Cannot specify name when creating remote project"
+			echo -e "Cannot specify name when creating remote project"
 			usage
 			exit 5
 		fi
 		;;
 	*)
-		echo "Unknown target ($1) specifier"
+		echo -e "Unknown target ($1) specifier"
 		usage
 		exit 2
 		;;
