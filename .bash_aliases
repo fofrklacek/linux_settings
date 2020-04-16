@@ -63,3 +63,7 @@ check tmux && alias mp3="$SCRIPT_DIR/$NOEXEC/tmux_updated"
 check sensors && alias sensors="$SCRIPT_DIR/$NOEXEC/sensors_updated"
 
 check aft-mtp-cli && alias phone_connect='aft-mtp-cli'
+
+check prettyping && alias ping='prettyping --nolegend'
+
+
