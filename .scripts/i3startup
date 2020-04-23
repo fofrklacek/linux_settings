@@ -1,0 +1,6 @@
+# set wallpaper
+feh --bg-fill ~/Pictures/Wallpapers/amd.png
+
+# set keayboard layouts
+setxkbmap -layout us,cz
+setxkbmap -option 'grp:alt_shift_toggle'

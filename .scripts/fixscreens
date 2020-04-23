@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# If you didn't install this script using install please make 
+# sure that you enable it in /etc/lightdb/lightdm.conf under 
+# section display-setup-script
+
+xrandr --output DP-0 --mode 2560x1440 --primary --left-of HDMI-0 --output HDMI-0 --mode 1920x1080 
