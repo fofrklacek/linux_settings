@@ -1,12 +1,6 @@
 # set wallpaper
-/usr/bin/xrandr --output HDMI-1 --off
-
-/usr/bin/xrandr --output DP-2 --auto --primary 
-
-/usr/bin/xrandr --output HDMI-1 --mode 1920x1080 --rate 60 --right-of DP-2 
-
 feh --bg-fill ~/Pictures/Wallpapers/amd.png
 
-# set keayboadr layouts
-setxkbmap -layout us,cz
+# set keayboard layouts
+setxkbmap -layout us,cz -variant ,qwerty
 setxkbmap -option 'grp:alt_shift_toggle'
