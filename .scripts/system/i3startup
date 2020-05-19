@@ -1,6 +1,9 @@
+#!/bin/bash
+
 # set wallpaper
-feh --bg-fill ~/Pictures/Wallpapers/amd.png
+feh --bg-fill ~/Pictures/Wallpapers/active/amd.png
 
 # set keayboard layouts
 setxkbmap -layout us,cz -variant ,qwerty
 setxkbmap -option 'grp:alt_shift_toggle'
+
