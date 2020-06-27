@@ -33,7 +33,7 @@ check htop && alias top='htop'
 #add own scripts to path
 PATH="$PATH:$SCRIPT_DIR/executable"
 PATH="$PATH:$SCRIPT_DIR/utils"
-PATH="$PATH:~/cargo/bin"
+PATH="$PATH:~/.cargo/bin"
 
 #compiler shortcut
 ## alias g='g++ -Wall -pedantic -fsanitize=address -g '
