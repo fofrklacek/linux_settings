@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # set wallpaper
-feh --bg-fill ~/Pictures/Wallpapers/active/amd.png
+## only for single monitor setup
+## feh --bg-fill ~/Pictures/Wallpapers/active/amd.png 
+nitrogen --restore
 
 # set keayboard layouts
 setxkbmap -layout us,cz -variant ,qwerty
