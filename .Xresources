@@ -1,0 +1,23 @@
+! basic visual
+URxvt.scrollBar: false
+!URxvt.letterSpace: -3
+
+! Fonts
+URxvt.font: xft:DejaVu Sans Mono:size=16
+!URxvt.font: xft:roboto:size=14
+!URxvt.font: xft:DejaVu Sans Mono,xft:unifont:size=16
+!URxvt.font: xft:monospace:size=16
+
+! foreground and background settings
+URxvt.foreground: #ffffff
+URxvt.background: #000000
+URxvt.cursorColor: #ffffff
+URxvt.transparent: true
+URxvt.shading: 30
+
+! Extensions
+URxvt.perl-ext-common: resize-font
+
+!resize-font
+!URxvt.resize-font.bigger:	C-j
+!URxvt.resize-font.smaller:	C-k
