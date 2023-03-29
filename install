@@ -1,14 +1,32 @@
 #!/bin/bash
+[[ $(which vim) ]] || echo "[NOTICE] Vim not detected. This might cause some issues."
 
 echo "Are you sure that you want to remove .bashrc,"
 echo ".profile, .bash_aliases, .scripts/, .bash_logout,"
-echo ".gitconfig, .vim, .vimrc?"
+echo ".gitconfig, .vim, .vimrc? [yes|no|custom]"
 
 read choice
 
 case "$choice" in
 	yes|y)
 		cp -r .scripts .bashrc .bash_aliases .gitconfig .bash_logout .bash_profile .vim .vimrc ~/.
+		;;
+	custom|c)
+		for i in .scripts .bashrc .bash_aliases .gitconfig .bash_logout .bash_profile .vim .vimrc 
+		do
+			if [ -f "$HOME/$i" -o -d "$HOME/$i" ]
+			then
+				echo "File $i exists. Rewrite? [y|n|c]"
+			else
+				echo "Install file $i? [y|n]"
+			fi
+			while
+				read choice_custom
+				[[ "$choice_custom" != "y" && "$choice_custom" != "c" && "$choice_custom" != "n" ]]
+			do true ; done
+			[[ "$choice_custom" == "y" ]] && echo "Copying file $i..." && cp -r "$i" "$HOME/."
+			[[ "$choice_custom" == "c" ]] && vim "$HOME/$i" -O "$i"
+		done
 		;;
 	no|n)
 		exit 1
