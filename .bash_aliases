@@ -67,4 +67,4 @@ check aft-mtp-cli && alias phone_connect='aft-mtp-cli'
 
 check prettyping && alias ping='prettyping --nolegend'
 
-
+########################################## CUSTOM ##########################################
