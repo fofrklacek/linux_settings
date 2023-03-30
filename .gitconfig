@@ -5,3 +5,5 @@
 	editor = vim
 [alias]
 	ll = log --oneline --graph --all --decorate
+
+######################### CUSTOM #########################

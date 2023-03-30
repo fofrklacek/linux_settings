@@ -264,3 +264,5 @@ endfunction
 function! s:MyPHPSettings()
 endfunction
 " }}}
+
+"######################### CUSTOM #########################

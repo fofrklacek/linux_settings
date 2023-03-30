@@ -1,4 +1,5 @@
 #!/bin/bash
+[[ $(which vimdiff) ]] || echo "[NOTICE] Vimdiff not detected. This might cause some issues."
 [[ $(which vim) ]] || echo "[NOTICE] Vim not detected. This might cause some issues."
 
 echo "Are you sure that you want to remove .bashrc,"
@@ -14,18 +15,61 @@ case "$choice" in
 	custom|c)
 		for i in .scripts .bashrc .bash_aliases .gitconfig .bash_logout .bash_profile .vim .vimrc 
 		do
-			if [ -f "$HOME/$i" -o -d "$HOME/$i" ]
+			if [ -f "$i" ]
 			then
-				echo "File $i exists. Rewrite? [y|n|c]"
+				LINE_NUMBER=$(grep -n -E '######################### CUSTOM #########################' "$i" | grep -Eo '^[^:]+' )
+
+				if diff <(head -n "$LINE_NUMBER" "$i") <(head -n "$LINE_NUMBER" "$HOME/$i") 1>/dev/null
+				then
+					echo "File $i is already installed"
+					continue
+				fi
+			else
+				if diff "$i" "$HOME/$i" 1>/dev/null
+				then
+					echo "Folder $i is already installed"
+					continue
+				fi
+			fi
+
+			if [ -f "$HOME/$i" ]
+			then
+				echo "File $i exists. Rewrite? [y|n|c|l]"
+			elif [ -d "$HOME/$i" ]
+			then
+				echo "Folder $i exists. Rewrite? [y|n]"
 			else
 				echo "Install file $i? [y|n]"
 			fi
-			while
-				read choice_custom
-				[[ "$choice_custom" != "y" && "$choice_custom" != "c" && "$choice_custom" != "n" ]]
-			do true ; done
-			[[ "$choice_custom" == "y" ]] && echo "Copying file $i..." && cp -r "$i" "$HOME/."
-			[[ "$choice_custom" == "c" ]] && vim "$HOME/$i" -O "$i"
+
+			if [ -f "$i" ]
+			then
+				while
+					read choice_custom
+					[[ "$choice_custom" == "l" ]] && diff "$i" "$HOME/$i"
+					[[ "$choice_custom" != "y" && "$choice_custom" != "c" && "$choice_custom" != "n" ]]
+				do true ; done
+			else
+				while
+					read choice_custom
+					[[ "$choice_custom" != "y" && "$choice_custom" != "n" ]]
+				do true ; done
+			fi
+
+			if [[ "$choice_custom" == "y" ]] 
+			then 
+				echo "Copying file $i..."  
+				cp -r "$i" "$HOME/."
+			elif [[ "$choice_custom" == "c" && $(which vimdiff) ]] 
+			then
+				vimdiff "$HOME/$i"  "$i"
+			elif [[ "$choice_custom" == "c" && $(which vim) ]]
+			then
+				vim "$HOME/$i" -O "$i"
+			else
+				echo "No editors found. Copying file to $HOME/$i.tmp..." >&2
+				cp -r "$i" "$HOME/$i.tmp"
+			fi
 		done
 		;;
 	no|n)

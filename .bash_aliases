@@ -16,6 +16,7 @@ fi
 alias ll='ls -hlF'
 alias la='ls -AhlF'
 alias l='ls -CF'
+alias ..='cd ..'
 
 #changes vim to updated vim
 alias vim="$SCRIPT_DIR/$NOEXEC/updated_vim"
@@ -67,4 +68,4 @@ check aft-mtp-cli && alias phone_connect='aft-mtp-cli'
 
 check prettyping && alias ping='prettyping --nolegend'
 
-########################################## CUSTOM ##########################################
+######################### CUSTOM #########################
